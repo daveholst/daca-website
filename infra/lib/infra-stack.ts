@@ -23,7 +23,6 @@ export class InfraStack extends cdk.Stack {
     const lambdaAdapterLayer = lambda.LayerVersion.fromLayerVersionArn(
       this,
       'LambdaAdapterLayerX86',
-      // TODO: double check this ARN is recent? - github repo
       `arn:aws:lambda:${this.region}:753240598075:layer:LambdaAdapterLayerX86:16`
     )
 
@@ -76,6 +75,7 @@ export class InfraStack extends cdk.Stack {
     })
 
     const nextBucket = new s3.Bucket(this, 'next-bucket', {
+      //TODO check I can reenable this
       // blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
       publicReadAccess: true,
       encryption: s3.BucketEncryption.S3_MANAGED,

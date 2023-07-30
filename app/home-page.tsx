@@ -22,17 +22,20 @@ export default function HomePage() {
         }}
         className={'h-screen bg-cover bg-center'}
       >
-        <div className="h-screen flex items-center justify-center flex-col bg-black/50">
+        <div className="h-screen flex space-y-5 items-center justify-center flex-col bg-black/50">
           <h2 className="text-white font-sans2 text-5xl font-bold ">
             RAW ADVENTURE
           </h2>
-          <p className=" font-sans3 text-orange-100 mt-3 text-3xl font-extralight text-center lg:w-1/3">
+          <p className=" font-sans3 text-orange-100 text-3xl font-extralight text-center lg:w-1/3">
             AUSTRALIA’S MOST REMOTE EPIC OFF-ROAD TOURS.
           </p>
           {!playVideo && (
-            <button onClick={() => setPlayVideo(true)}>
+            <button
+              className="flex flex-col space-y-3"
+              onClick={() => setPlayVideo(true)}
+            >
               <RoundPlay />
-              <span className="font-sans3 text-white font-bold">
+              <span className="font-sans3 text-white font-bold ">
                 WATCH VIDEO
               </span>
             </button>
@@ -44,7 +47,7 @@ export default function HomePage() {
                 width={'100%'}
                 height={'100%'}
                 // playing
-                url="https://www.youtube.com/watch?v=38LLPkpbOXs"
+                url="https://www.youtube.com/watch?v=-IoGj1orFVc"
                 config={{
                   playerVars: { autoplay: 1, controls: 0, modestbranding: 1 },
                 }}
