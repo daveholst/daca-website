@@ -7,7 +7,6 @@ const NavBar: React.FC = () => {
     <div className="top-0 fixed w-full bg-black ">
       <nav className="md:container flex justify-between mx-auto">
         <Image
-          width={165}
           height={48}
           className="my-2"
           src={dacaLogo}

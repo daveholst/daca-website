@@ -16,7 +16,12 @@ export default function HomePage() {
     <>
       {/* Video Intro & CTA */}
       {/* TODO: fix this to work in both local and prod :thinking: conditional with const isProd = process.env.NODE_ENV === 'production'?*/}
-      <div className="h-screen bg-cover bg-center bg-[url(/img/fire-bikes-ute.jpeg')] ">
+      <div
+        style={{
+          backgroundImage: `url(${fireBikesUte.src})`,
+        }}
+        className={'h-screen bg-cover bg-center'}
+      >
         <div className="h-screen flex items-center justify-center flex-col bg-black/50">
           <h2 className="text-white font-sans2 text-5xl font-bold ">
             RAW ADVENTURE
