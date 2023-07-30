@@ -4,6 +4,8 @@ import RoundPlay from '@/components/icons/RoundPlay'
 import { useState } from 'react'
 import ReactPlayer from 'react-player/youtube'
 
+import fireBikesUte from '../public/img/fire-bikes-ute.jpeg'
+
 // This is a Client Component. It receives data as props and
 // has access to state and effects just like Page components
 // in the `pages` directory.
@@ -13,7 +15,8 @@ export default function HomePage() {
   return (
     <>
       {/* Video Intro & CTA */}
-      <div className="h-screen bg-cover bg-center bg-[url('/img/fire-bikes-ute.jpeg')] ">
+      {/* TODO: fix this to work in both local and prod :thinking: conditional with const isProd = process.env.NODE_ENV === 'production'?*/}
+      <div className="h-screen bg-cover bg-center bg-[url(/img/fire-bikes-ute.jpeg')] ">
         <div className="h-screen flex items-center justify-center flex-col bg-black/50">
           <h2 className="text-white font-sans2 text-5xl font-bold ">
             RAW ADVENTURE

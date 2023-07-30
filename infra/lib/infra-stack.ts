@@ -10,7 +10,7 @@ import * as s3deploy from 'aws-cdk-lib/aws-s3-deployment'
 import * as path from 'path'
 
 /** Dirs for S3 Static Files */
-const publicStaticDir = '../../public'
+const publicStaticDir = './public'
 const nextStaticDir = './.next/static'
 /* Dir for next code (relative to this file... I think) */
 const relativeNextDir = '../../.next/standalone'
@@ -76,7 +76,8 @@ export class InfraStack extends cdk.Stack {
     })
 
     const nextBucket = new s3.Bucket(this, 'next-bucket', {
-      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+      // blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+      publicReadAccess: true,
       encryption: s3.BucketEncryption.S3_MANAGED,
       versioned: true,
       serverAccessLogsBucket: nextLoggingBucket,
@@ -84,6 +85,16 @@ export class InfraStack extends cdk.Stack {
     })
 
     new cdk.CfnOutput(this, 'Next bucket', { value: nextBucket.bucketName })
+
+    const mediaCachePolicy = new cloudfront.CachePolicy(
+      this,
+      'MediaCachePolicy',
+      {
+        enableAcceptEncodingGzip: true,
+        headerBehavior: cloudfront.CacheHeaderBehavior.allowList('Host'),
+        queryStringBehavior: cloudfront.CacheQueryStringBehavior.all(),
+      }
+    )
 
     const cloudfrontDistribution = new cloudfront.Distribution(
       this,
@@ -96,14 +107,15 @@ export class InfraStack extends cdk.Stack {
           cachePolicy: cloudfront.CachePolicy.CACHING_DISABLED,
         },
         additionalBehaviors: {
-          '_next/static/*': {
+          '_next/*': {
             origin: new origins.S3Origin(nextBucket),
             viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.HTTPS_ONLY,
+            // cachePolicy: mediaCachePolicy,
           },
-          'static/*': {
-            origin: new origins.S3Origin(nextBucket),
-            viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.HTTPS_ONLY,
-          },
+          //   'static/*': {
+          //     origin: new origins.S3Origin(nextBucket),
+          //     viewerProtocolPolicy: cloudfront.ViewerProtocolPolicy.HTTPS_ONLY,
+          //   },
         },
         minimumProtocolVersion: cloudfront.SecurityPolicyProtocol.TLS_V1_2_2018,
         logBucket: nextLoggingBucket,

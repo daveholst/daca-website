@@ -1,5 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
+import Image from 'next/image'
+import Link from 'next/link'
+import dacaLogo from '../public/dacaLogo.png'
 
 const NavBar: React.FC = () => {
   return (
@@ -9,7 +10,7 @@ const NavBar: React.FC = () => {
           width={165}
           height={48}
           className="my-2"
-          src="/dacaLogo.png"
+          src={dacaLogo}
           alt="Daca Tours Logo"
         />
         <ul className="flex flex-row items-center gap-4">
@@ -34,7 +35,7 @@ const NavBar: React.FC = () => {
         </ul>
       </nav>
     </div>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
