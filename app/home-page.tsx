@@ -88,7 +88,7 @@ export default function HomePage() {
                   From $3850
                 </p>
                 <div className="flex flex-col md:flex-row gap-3 ">
-                  <button className="border-2 border-orange-500 text-orange-400 h-12 grow">
+                  <button className="border-2 border-orange-300 text-orange-300 h-12 grow">
                     LEARN MORE
                   </button>
                   <button className="border-2 border-orange-500 text-orange-400 h-12 grow max-w-['6rem']">

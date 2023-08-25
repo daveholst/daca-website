@@ -4,7 +4,7 @@ export const goldenOutback = {
   days: 5,
   loop: true,
   distance: 1000,
-  basePrice: 3875,
+  basePrice: 3875, // prob derive this from pricing options - prob not required
   pricingOptions: [
     {
       name: 'Bike Inclusive',
@@ -16,14 +16,11 @@ export const goldenOutback = {
   hook: 'DACA tours “Golden Outback” adventure is extremely remote, and accesses parts of Australia rarely seen or driven.',
   copy: [
     "In a decade of exploring this region we're yet to see any bikes, and have completed over 1000kms regularly not coming across a single person!",
-
     'The riding is everything from open and fast to very challenging with densely vegetated trails and rocky breakaway country.',
-
     "You'll be mesmerised by all of the “Great Victoria Desert” and its unexpected woodlands, vegetation and lake systems making for a very diverse and ever-changing ride.",
-
     "Riding in the footprints of early explorers aboard your bike of choice through this remote land, is the most memorable riding we've ever done and we're passionate about sharing this experience with you.",
   ],
-  itenary: [
+  itinerary: [
     {
       day: 1,
       title: 'Laverton - Lake Wells',
