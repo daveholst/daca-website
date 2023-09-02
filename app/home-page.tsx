@@ -9,13 +9,20 @@ import fireBikesUte from '../public/img/fire-bikes-ute.jpeg'
 import goldenOutback from '../public/img/golden-outback-911x1024.jpg'
 import Image from 'next/image'
 import Link from 'next/link'
+import { ToursInfo } from '@/src/schema/types'
+import { TourCard } from '@/components/cards/TourCard'
 
 // This is a Client Component. It receives data as props and
 // has access to state and effects just like Page components
 // in the `pages` directory.
-export default function HomePage() {
+interface HomePageProps {
+  //TODO I have the types, just need to validate and tidy up
+  tours: ToursInfo[]
+}
+
+export default function HomePage({ tours }: HomePageProps) {
   const [playVideo, setPlayVideo] = useState(false)
-  // console.log(test)
+  console.log(tours)
   return (
     <>
       {/* Video Intro & CTA */}
@@ -60,79 +67,12 @@ export default function HomePage() {
           )}
         </div>
       </div>
-      {/* Orange section with all the cards */}
+      {/* Orange section with the tour cards */}
       <div className="bg-orange-400 flex justify-center w-full">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 container max-w-3xl center my-6">
-          {/* Card Start */}
-          <div className="bg-black flex-col flex ">
-            <Image
-              src="/img/golden-outback-911x1024.jpg"
-              alt="Man standing in pilbra with dirtbike"
-              width={900}
-              height={900}
-            />
-            <div>
-              <div className="flex flex-col gap-2 m-4">
-                <h3 className="font-sans2 text-3xl text-orange-500 uppercase text-center">
-                  Golden Outback
-                </h3>
-                <p className="text-white font-thin text-center font-sans3 ">
-                  {
-                    'DACA tours “Golden Outback” adventure is extremely remote, and accesses parts of Australia rarely seen or driven.'
-                  }
-                </p>
-                <p className="font-sans3 font-bold uppercase text-white text-center">
-                  Loop / 1000 KM / 5 Days
-                </p>
-                <p className="text-white text-center text-1xl font-sans3 font-thin">
-                  From $3850
-                </p>
-                <div className="flex flex-col md:flex-row gap-3 ">
-                  <button className="border-2 border-orange-300 text-orange-300 h-12 grow">
-                    LEARN MORE
-                  </button>
-                  <button className="border-2 border-orange-500 text-orange-400 h-12 grow max-w-['6rem']">
-                    BOOK NOW
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* Card Start */}
-          <div className="bg-black flex-col flex ">
-            <Image
-              src="/img/golden-outback-911x1024.jpg"
-              alt="Man standing in pilbra with dirtbike"
-              width={900}
-              height={900}
-            />
-            <div>
-              <div className="flex flex-col gap-2 m-4">
-                <h3 className="font-sans2 text-3xl text-orange-500 uppercase text-center">
-                  Golden Outback
-                </h3>
-                <p className="text-white font-thin text-center font-sans3 ">
-                  {
-                    'DACA tours “Golden Outback” adventure is extremely remote, and accesses parts of Australia rarely seen or driven.'
-                  }
-                </p>
-                <p className="font-sans3 font-bold uppercase text-white text-center">
-                  Loop / 1000 KM / 5 Days
-                </p>
-                <p className="text-white text-center text-1xl font-sans3 font-thin">
-                  From $3850
-                </p>
-                <div className="flex flex-col md:flex-row gap-3 ">
-                  <button className="border-2 border-orange-500 text-orange-400 h-12 grow">
-                    LEARN MORE
-                  </button>
-                  <button className="border-2 border-orange-500 text-orange-400 h-12 grow max-w-['6rem']">
-                    BOOK NOW
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          {tours.map((t) => (
+            <TourCard tour={t} key={t.id} />
+          ))}
         </div>
       </div>
     </>
