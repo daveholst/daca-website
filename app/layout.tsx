@@ -1,7 +1,7 @@
-import NavBar from "@/components/NavBar";
-import "./globals.css";
-import { Metadata } from "next";
-import { Quicksand, Bungee, Montserrat } from "next/font/google";
+import NavBar from '@/components/NavBar'
+import './globals.css'
+import { Metadata } from 'next'
+import { Quicksand, Bungee, Montserrat } from 'next/font/google'
 
 //TODO not 100% sure this is correct, or needed
 // const coromantGaramond = Cormorant_Garamond({
@@ -12,35 +12,35 @@ import { Quicksand, Bungee, Montserrat } from "next/font/google";
 // });
 
 const quicksand = Quicksand({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-quicksand",
-});
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-quicksand',
+})
 
 const bungee = Bungee({
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
-  variable: "--font-bungee",
-});
+  subsets: ['latin'],
+  weight: ['400'],
+  display: 'swap',
+  variable: '--font-bungee',
+})
 
 const montserrat = Montserrat({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-montserrat",
-});
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-montserrat',
+})
 
 export const metadata: Metadata = {
-  title: "Home",
-  description: "Welcome to Next.js",
-};
+  title: 'Home',
+  description: 'Welcome to Next.js',
+}
 
 export default function RootLayout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html
@@ -48,9 +48,9 @@ export default function RootLayout({
       className={`${quicksand.variable} ${bungee.variable} ${montserrat.variable}`}
     >
       <body>
-        <NavBar></NavBar>
+        <NavBar />
         {children}
       </body>
     </html>
-  );
+  )
 }

@@ -7,7 +7,10 @@ import * as lambda from 'aws-cdk-lib/aws-lambda'
 import * as origins from 'aws-cdk-lib/aws-cloudfront-origins'
 import * as s3 from 'aws-cdk-lib/aws-s3'
 import * as s3deploy from 'aws-cdk-lib/aws-s3-deployment'
+import * as iam from 'aws-cdk-lib/aws-iam'
 import * as path from 'path'
+import { ConstructSingleTableDynamo } from '../lib/contructors/ConstructSingleTableDynamo'
+import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs'
 
 /** Dirs for S3 Static Files */
 const publicStaticDir = './public'
@@ -18,6 +21,32 @@ const relativeNextDir = '../../.next/standalone'
 export class InfraStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props)
+
+    const dynamoDB = new ConstructSingleTableDynamo(this, 'DacaToursTable', {
+      tableProps: {
+        tableName: 'daca-tours',
+      },
+    })
+
+    new cdk.CfnOutput(this, 'dynamoDB Endpoint', {
+      value: dynamoDB.table.tableArn,
+    })
+
+    // const lambdaRole = new iam.Role(this, 'LambdaRole', {
+    //   assumedBy: new iam.ServicePrincipal('lambda.amazonaws.com'),
+    // })
+
+    // lambdaRole.addToPolicy(
+    //   new iam.PolicyStatement({
+    //     effect: iam.Effect.ALLOW,
+    //     actions: [
+    //       'dynamodb:PutItem',
+    //       'dynamodb:GetItem',
+    //       // Add other DynamoDB actions as needed
+    //     ],
+    //     resources: [dynamoDB.table.tableArn],
+    //   })
+    // )
 
     // defines your stack here
     const lambdaAdapterLayer = lambda.LayerVersion.fromLayerVersionArn(
@@ -41,9 +70,24 @@ export class InfraStack extends cdk.Stack {
         AWS_LAMBDA_EXEC_WRAPPER: '/opt/bootstrap',
         RUST_LOG: 'info',
         PORT: '8080',
+        // DB_ENDPOINT: dynamoDB.table.tableArn,
       },
       layers: [lambdaAdapterLayer],
+      // role: lambdaRole,
     })
+
+    nextCdkFunction.addToRolePolicy(
+      new iam.PolicyStatement({
+        effect: iam.Effect.ALLOW,
+        actions: [
+          'dynamodb:PutItem',
+          'dynamodb:GetItem',
+          'dynamodb:Query',
+          // Add other DynamoDB actions as needed
+        ],
+        resources: [dynamoDB.table.tableArn],
+      })
+    )
 
     const api = new apiGateway.RestApi(this, 'api', {
       defaultCorsPreflightOptions: {
