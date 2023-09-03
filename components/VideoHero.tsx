@@ -12,7 +12,7 @@ export function VideoHero() {
       style={{
         backgroundImage: `url(${fireBikesUte.src})`,
       }}
-      className={'h-screen bg-cover bg-center'}
+      className={'h-screen sticky bottom-0 bg-cover bg-center'}
     >
       <div className="h-screen flex space-y-5 items-center justify-center flex-col bg-black/50">
         <h2 className="text-white font-sans2 text-5xl font-bold text-center">
