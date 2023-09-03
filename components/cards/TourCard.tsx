@@ -2,6 +2,9 @@ import * as React from 'react'
 import Image from 'next/image'
 import { ToursInfo } from '@/src/schema/types'
 
+// TODO how this going to work dynamically?
+import tourImage from '../../public/img/golden-outback-911x1024.jpg'
+
 export interface TourCardProps {
   tour: ToursInfo
 }
@@ -11,7 +14,7 @@ export function TourCard({ tour }: TourCardProps) {
     <div className="bg-black flex-col flex ">
       {/* TODO drive this off a prop... tour.id naming convention */}
       <Image
-        src="/img/golden-outback-911x1024.jpg"
+        src={tourImage}
         alt="Man standing in pilbra with dirtbike"
         width={640}
         height={720}

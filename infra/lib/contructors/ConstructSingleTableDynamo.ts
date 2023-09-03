@@ -17,7 +17,7 @@ export interface ConstructSingleTableDynamoProps extends cdk.StackProps {
  * https://blog.dennisokeeffe.com/blog/2021-08-09-dynamodb-with-localstack-and-the-aws-cdk
  */
 export class ConstructSingleTableDynamo extends Construct {
-  public readonly dynamoTable: dynamodb.Table
+  public readonly table: dynamodb.Table
 
   constructor(
     scope: Construct,
@@ -26,7 +26,7 @@ export class ConstructSingleTableDynamo extends Construct {
   ) {
     super(scope, id)
 
-    this.dynamoTable = new dynamodb.Table(this, `SingleTable`, {
+    this.table = new dynamodb.Table(this, 'MySingleTable', {
       partitionKey: {
         name: 'pk',
         type: dynamodb.AttributeType.STRING,
@@ -40,7 +40,7 @@ export class ConstructSingleTableDynamo extends Construct {
       ...props?.tableProps,
     })
 
-    this.dynamoTable.addGlobalSecondaryIndex({
+    this.table.addGlobalSecondaryIndex({
       indexName: 'GSI1',
       partitionKey: {
         name: 'GSI1PK',
@@ -56,7 +56,7 @@ export class ConstructSingleTableDynamo extends Construct {
     })
 
     // added code
-    this.dynamoTable.addGlobalSecondaryIndex({
+    this.table.addGlobalSecondaryIndex({
       indexName: 'GSI2',
       partitionKey: {
         name: 'GSI2PK',

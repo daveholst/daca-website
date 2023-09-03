@@ -10,6 +10,9 @@ const nextConfig = {
     // Custom loader that strips out all query params that worn't working through cloudfront
     loaderFile: './src/loaders/cloudfront.js',
   },
+  experimental: {
+    serverActions: true,
+  },
   webpack: (config, { webpack, isServer, nextRuntime }) => {
     // Avoid AWS SDK Node.js require issue
     if (isServer && nextRuntime === 'nodejs')

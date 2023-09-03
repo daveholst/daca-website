@@ -12,9 +12,10 @@ import { unmarshall } from '@aws-sdk/util-dynamodb'
  * @returns Info for all tours from dynamo
  */
 export async function getToursInfo(): Promise<ToursInfo[]> {
+  console.log('DB endpoint', process.env.DB_ENDPOINT)
   const client = new DynamoDBClient({
     region: 'ap-southeast-2',
-    endpoint: 'http://localhost:8000',
+    endpoint: process.env.LOCAL_DB_ENDPOINT,
   })
 
   const params: QueryCommandInput = {
@@ -28,7 +29,6 @@ export async function getToursInfo(): Promise<ToursInfo[]> {
   try {
     const command = new QueryCommand(params)
     const result = await client.send(command)
-
     if (result.Items) {
       const items = result.Items.map((i) => unmarshall(i))
       const parsed = items.map((i) => tourInfoSchema.parse(i))
