@@ -7,7 +7,8 @@
     "build": "next build && cp infra/run.sh .next/standalone",
     "deploy": "npm run build && cdk deploy",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "localstack": "localstack start"
   },
   "dependencies": {
     "@types/node": "20.4.5",
