@@ -8,21 +8,21 @@ import {
 import { unmarshall } from '@aws-sdk/util-dynamodb'
 
 /**
- * getToursInfo does a pk query of 'tours#info' to get all tours information
- * @returns Info for all tours from dynamo
+ * getTour takes
+ * @returns Tour information TODO: add calender (future tours) into this request
  */
-export async function getToursInfo(): Promise<ToursInfo[]> {
+export async function getTour(tourId: string): Promise<ToursInfo[]> {
   const client = new DynamoDBClient({
     region: 'ap-southeast-2',
     endpoint: process.env.LOCAL_DB_ENDPOINT,
   })
 
   const params: QueryCommandInput = {
-    //TODO dynamic off the stackname? - maybe just a config file?
-    TableName: 'prod-daca-tours-table',
-    KeyConditionExpression: 'pk = :pkValue',
+    TableName: 'daca-tours',
+    IndexName: 'GSI1',
+    KeyConditionExpression: 'GSI1PK = :GSI1PKValue',
     ExpressionAttributeValues: {
-      ':pkValue': { S: 'tours#info' },
+      ':GSI1PKValue': { S: tourId },
     },
   }
 

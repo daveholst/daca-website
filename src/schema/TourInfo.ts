@@ -2,15 +2,14 @@ import { z } from 'zod'
 
 const pricingOptionSchema = z.object({
   name: z.string(),
-  description: z.string(),
+  copy: z.array(z.string()),
   price: z.number(),
 })
 
 const itineraryItemSchema = z.object({
   day: z.number(),
-  location: z.string().optional(),
-  title: z.string().optional(),
-  description: z.string(),
+  title: z.string(),
+  description: z.array(z.string()),
 })
 
 export const tourInfoSchema = z.object({
@@ -21,7 +20,6 @@ export const tourInfoSchema = z.object({
   days: z.number(),
   loop: z.boolean(),
   distance: z.number(),
-  basePrice: z.number(),
   pricingOptions: z.array(pricingOptionSchema),
   coverImage: z.string(),
   hook: z.string(),

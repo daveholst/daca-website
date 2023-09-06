@@ -1,4 +1,3 @@
-import * as React from 'react'
 import Image from 'next/image'
 import { ToursInfo } from '@/src/schema/types'
 
@@ -10,12 +9,16 @@ export interface TourCardProps {
 }
 
 export function TourCard({ tour }: TourCardProps) {
+  const cheapestPrice = Math.min(
+    ...tour.pricingOptions.map((option) => option.price)
+  )
+
   return (
     <div className="bg-black flex-col flex ">
       {/* TODO drive this off a prop... tour.id naming convention */}
       <Image
         src={tourImage}
-        alt="Man standing in pilbra with dirtbike"
+        alt="Man standing in Pilbara with dirtbike"
         width={640}
         height={720}
       />
@@ -33,7 +36,7 @@ export function TourCard({ tour }: TourCardProps) {
             } Days`}
           </p>
           <p className="text-white text-center text-1xl font-sans3 font-thin">
-            {`From $${tour.basePrice}`}
+            {`From $${cheapestPrice}`}
           </p>
           <div className="flex flex-col md:flex-row gap-3 ">
             <button className="border-2 border-orange-300 text-orange-300 h-12 grow">
