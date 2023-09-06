@@ -39,3 +39,7 @@ next-env.d.ts
 
 # Docker
 docker/
+
+#next
+/.open-next/
+/.sst/

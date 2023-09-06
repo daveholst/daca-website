@@ -19,7 +19,8 @@ export async function getToursInfo(): Promise<ToursInfo[]> {
   })
 
   const params: QueryCommandInput = {
-    TableName: 'daca-tours',
+    //TODO dynamic off the stackname? - maybe just a config file?
+    TableName: 'prod-daca-tours-table',
     KeyConditionExpression: 'pk = :pkValue',
     ExpressionAttributeValues: {
       ':pkValue': { S: 'tours#info' },

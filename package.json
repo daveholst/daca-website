@@ -3,17 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build && cp infra/run.sh .next/standalone",
-    "deploy": "npm run build && cdk deploy daca-website",
+    "dev": "sst bind next dev",
+    "build": "next build",
+    "deploy:prod": "npx sst deploy --stage prod",
     "start": "next start",
-    "lint": "next lint",
-    "local": "cdklocal",
-    "local:bootstrap": "cdklocal bootstrap",
-    "local:synth": "cdklocal synth daca-website-local",
-    "local:deploy": "cdklocal deploy daca-website-local",
-    "local:destroy": "cdklocal destroy daca-website-local",
-    "localstack": "localstack start"
+    "lint": "next lint"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "^3.398.0",
@@ -22,8 +16,6 @@
     "@types/react": "18.2.17",
     "@types/react-dom": "18.2.7",
     "autoprefixer": "10.4.14",
-    "aws-cdk-lib": "^2.89.0",
-    "constructs": "^10.2.69",
     "eslint": "8.46.0",
     "eslint-config-next": "^13.4.19",
     "next": "^13.4.19",
@@ -35,5 +27,10 @@
     "tailwindcss": "3.3.3",
     "typescript": "5.1.6",
     "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "sst": "^2.24.24",
+    "aws-cdk-lib": "2.91.0",
+    "constructs": "10.2.69"
   }
 }
