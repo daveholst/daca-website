@@ -12,6 +12,7 @@ import { unmarshall } from '@aws-sdk/util-dynamodb'
  * @returns Tour information TODO: add calender (future tours) into this request
  */
 export async function getTour(tourId: string): Promise<ToursInfo[]> {
+  console.log(tourId)
   const client = new DynamoDBClient({
     region: 'ap-southeast-2',
     endpoint: process.env.LOCAL_DB_ENDPOINT,

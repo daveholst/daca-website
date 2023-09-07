@@ -16,7 +16,7 @@ export default async function Page({ params }: Props) {
     <div className="bg-white">
       {/* Side-by-side (desktop) with info and tour hero image */}
       <div className="xl:container md:flex-row mx-auto flex flex-col">
-        <div className="md:w-1/2 text-center m-4 flex flex-col items-center gap-y-4">
+        <div className="md:w-1/2 text-center m-4 flex flex-col items-center justify-center gap-y-4">
           <h2 className="capitalize font-sans2 my-2 text-5xl font-bold text-orange-500">
             {tour.title}
           </h2>
@@ -31,15 +31,14 @@ export default async function Page({ params }: Props) {
           {/* TODO make this feed off the db & maybe link to the calender */}
           <p className="font-sans3 font-bold text-xl">SEE TOUR CALENDER</p>
         </div>
-        <Image
-          className="mx-auto"
-          // TODO This works, but feels a bit suss
-          src={require(`../../../public/img/${tourId}-911x1024.jpg`)}
-          alt="Man standing in Pilbara with dirtbike"
-          width={640}
-          height={720}
-          // layout="fill"
-        />
+        <div className="block md:w-1/2">
+          <Image
+            className="h-full object-cover"
+            // TODO This works, but feels a bit suss
+            src={require(`../../../public/img/${tourId}-911x1024.jpg`)}
+            alt="bikes riding through desert"
+          />
+        </div>
       </div>
       {/* Itinerary  */}
       <div className="bg-amber-500  ">

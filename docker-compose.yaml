@@ -18,7 +18,7 @@ services:
     ports:
       - "8004:8001"
     environment:
-      - DYNAMO_ENDPOINT=http://dynamodb-local:8005
+      - DYNAMO_ENDPOINT=http://dacatours-dynamodb-local:8000
     depends_on:
       - dynamodb-local
     restart: unless-stopped

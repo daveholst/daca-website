@@ -20,7 +20,7 @@ const NavBar: React.FC = () => {
             <Link href="/about">About</Link>
           </li>
           <li className="text-white uppercase font-medium text-sm hover:text-orange-400">
-            Tours
+            <Link href="/tours/golden-outback">Tours</Link>
           </li>
           <li className="text-white uppercase font-medium text-sm hover:text-orange-400">
             Videos

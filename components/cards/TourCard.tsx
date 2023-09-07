@@ -19,6 +19,7 @@ export function TourCard({ tour }: TourCardProps) {
       <Image
         src={tourImage}
         alt="Man standing in Pilbara with dirtbike"
+        layout="fixed"
         width={640}
         height={720}
       />
