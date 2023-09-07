@@ -18,11 +18,11 @@ export async function getTour(tourId: string): Promise<ToursInfo[]> {
   })
 
   const params: QueryCommandInput = {
-    TableName: 'daca-tours',
+    TableName: 'prod-daca-tours-table',
     IndexName: 'GSI1',
-    KeyConditionExpression: 'GSI1PK = :GSI1PKValue',
+    KeyConditionExpression: 'gsi1pk = :gs1pkValue',
     ExpressionAttributeValues: {
-      ':GSI1PKValue': { S: tourId },
+      ':gs1pkValue': { S: tourId },
     },
   }
 
