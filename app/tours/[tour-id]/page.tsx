@@ -15,8 +15,8 @@ export default async function Page({ params }: Props) {
   return (
     <div className="bg-white">
       {/* Side-by-side (desktop) with info and tour hero image */}
-      <div className="mx-auto flex flex-col xl:container md:flex-row">
-        <div className="m-4 flex flex-col items-center justify-center gap-y-4 text-center md:w-1/2">
+      <div className="mx-auto flex flex-col xl:container lg:flex-row">
+        <div className="m-4 flex flex-col items-center justify-center gap-y-4 text-center lg:w-1/2">
           <h2 className="my-2 font-sans2 text-5xl font-bold capitalize text-orange-500">
             {tour.title}
           </h2>
@@ -31,7 +31,7 @@ export default async function Page({ params }: Props) {
           {/* TODO make this feed off the db & maybe link to the calender */}
           <p className="font-sans3 text-xl font-bold">SEE TOUR CALENDER</p>
         </div>
-        <div className="relative block h-[450px] md:h-auto md:w-1/2">
+        <div className="relative block h-[450px] lg:h-auto lg:w-1/2">
           <Image
             className="object-cover"
             // TODO This works, but feels a bit suss

@@ -14,7 +14,7 @@ export function TourCard({ tour }: TourCardProps) {
   )
 
   return (
-    <div className="flex flex-col bg-black ">
+    <div className="flex flex-col bg-black">
       {/* TODO drive this off a prop... tour.id naming convention */}
       <Image
         // src={tourImage}
@@ -24,16 +24,18 @@ export function TourCard({ tour }: TourCardProps) {
         width={640}
         height={720}
       />
-      <div>
-        <div className="m-4 flex flex-col gap-2">
+      <div className="m-4 flex grow flex-col justify-between gap-5">
+        <div className="flex flex-col gap-2">
           <h3 className="text-center font-sans2 text-3xl uppercase text-orange-500">
             {tour.title}
           </h3>
           <p className="text-center font-sans3 font-thin text-white ">
             {tour.hook}
           </p>
+        </div>
+        <div className="flex flex-col gap-2">
           <p className="text-center font-sans3 font-bold uppercase text-white">
-            {`${tour.loop ? 'Loop' : 'One-way'} / ${tour.distance} / ${
+            {`${tour.loop ? 'Loop' : 'One-way'} / ${tour.distance}KM / ${
               tour.days
             } Days`}
           </p>

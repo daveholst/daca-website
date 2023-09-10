@@ -19,8 +19,9 @@ export default async function HomePage() {
       {/* Video Intro & CTA */}
       <VideoHero />
       {/* Orange section with the tour cards */}
-      <div className="bg-orange-400 flex justify-center w-full">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 container max-w-3xl center my-6">
+      <div className="flex w-full justify-center bg-orange-400">
+        <div className="center container my-6 grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2">
+          {/* TODO, I don't think this is actually doing anything :kek: */}
           <Suspense fallback={<span>Loading...</span>}>
             {tours.map((t) => (
               <TourCard tour={t} key={t.id} />
