@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react'
-import fireBikesUte from '../public/img/fire-bikes-ute.jpeg'
+import fireBikesUte from '../public/img/fire-bikes-ute.jpg'
 import RoundPlay from '@/components/icons/RoundPlay'
 import ReactPlayer from 'react-player/youtube'
 import Image from 'next/image'
