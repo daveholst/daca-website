@@ -50,15 +50,13 @@ export default async function Page({ params }: Props) {
           <hr className="h-0.5 w-56 bg-white" />
           {tour.itinerary.map((itin, i) => (
             <div key={i}>
-              <h3 className="mb-4 font-sans3 text-xl font-extrabold">
+              <h3 className="mb-4 font-sans3 text-2xl font-extrabold">
                 <span className="text-white">{`DAY ${itin.day}: `}</span>
                 <span>{itin.title?.toUpperCase()}</span>
               </h3>
-              <div className="flex flex-col gap-y-4 ">
+              <div className="flex flex-col gap-y-4 font-sans3">
                 {itin.description.map((copy, i) => (
-                  <p className="font-sans3" key={i}>
-                    {copy}
-                  </p>
+                  <p key={i}>{copy}</p>
                 ))}
               </div>
             </div>

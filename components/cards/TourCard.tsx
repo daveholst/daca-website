@@ -3,6 +3,7 @@ import { ToursInfo } from '@/src/schema/types'
 
 // TODO how this going to work dynamically?
 import tourImage from '../../public/img/golden-outback-911x1024.jpg'
+import Link from 'next/link'
 
 export interface TourCardProps {
   tour: ToursInfo
@@ -42,13 +43,17 @@ export function TourCard({ tour }: TourCardProps) {
           <p className="text-1xl text-center font-sans3 font-thin text-white">
             {`From $${cheapestPrice}`}
           </p>
-          <div className="flex flex-col gap-3 md:flex-row ">
-            <button className="h-12 grow border-2 border-orange-300 text-orange-300">
-              LEARN MORE
-            </button>
-            <button className="h-12 max-w-['6rem'] grow border-2 border-orange-500 text-orange-400">
-              BOOK NOW
-            </button>
+          <div className="mb-2 flex grow justify-center gap-3 md:flex-row">
+            <Link href={`/tours/${tour.id}`}>
+              <button className="border-2 border-orange-300 px-3 py-2 text-orange-300">
+                LEARN MORE
+              </button>
+            </Link>
+            <Link href="/contact/bookings">
+              <button className="border-2 border-orange-500 px-3 py-2 text-orange-400">
+                BOOK NOW
+              </button>
+            </Link>
           </div>
         </div>
       </div>
