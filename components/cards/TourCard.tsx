@@ -1,12 +1,12 @@
 import Image from 'next/image'
-import { ToursInfo } from '@/src/schema/types'
+import { TourInfo } from '@/src/schema/types'
 
 // TODO how this going to work dynamically?
 import tourImage from '../../public/img/golden-outback-911x1024.jpg'
 import Link from 'next/link'
 
 export interface TourCardProps {
-  tour: ToursInfo
+  tour: TourInfo
 }
 
 export function TourCard({ tour }: TourCardProps) {

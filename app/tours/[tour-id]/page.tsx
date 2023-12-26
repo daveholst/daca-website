@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { getTour } from '@/src/database/getTour'
+import { getTour } from '@/src/database/get-tour'
 
 // import tourImage from '../../../public/img/golden-outback-911x1024.jpg'
 
@@ -7,7 +7,7 @@ interface Props {
   params: { 'tour-id': string }
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page({ params }: Readonly<Props>) {
   // get the tour from the db
   const tourId = params['tour-id']
   const [tour] = await getTour(tourId)
@@ -24,11 +24,11 @@ export default async function Page({ params }: Props) {
           <p className="font-sans3 text-xl font-extrabold">{`${tour.days} DAY TOUR`}</p>
           <p className="font-sans3 text-lg font-bold">{tour.hook}</p>
           {tour.copy.map((copy, i) => (
-            <p className="font-sans3" key={i}>
+            <p className="font-sans3" key={`${tourId}-${i}`}>
               {copy}
             </p>
           ))}
-          {/* TODO make this feed off the db & maybe link to the calender */}
+          {/*TODO make this feed off the db & maybe link to the calender */}
           <p className="font-sans3 text-xl font-bold">SEE TOUR CALENDER</p>
         </div>
         <div className="relative block h-[450px] lg:h-auto lg:w-1/2">

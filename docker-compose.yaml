@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   dynamodb-local:
-    #TODO pin this
+    #TODO pin these versions?
     image: "amazon/dynamodb-local:latest"
     container_name: dacatours-dynamodb-local
     ports:
@@ -12,7 +12,7 @@ services:
     command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
 
   dynamodb-admin:
-    #TODO pin these
+    #TODO pin these versions?
     image: aaronshaf/dynamodb-admin:latest
     container_name: dacatours-dynamodb-admin
     ports:

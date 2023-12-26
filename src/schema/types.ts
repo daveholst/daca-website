@@ -1,4 +1,4 @@
-import { tourInfoSchema } from '@/src/schema/TourInfo'
+import { tourInfoSchema } from '@/src/schema/tour-info'
 import { z } from 'zod'
 
-export type ToursInfo = z.infer<typeof tourInfoSchema>
+export type TourInfo = z.infer<typeof tourInfoSchema>

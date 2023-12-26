@@ -1,7 +1,7 @@
-import { ToursInfo } from '@/src/schema/types'
+import { TourInfo } from '@/src/schema/types'
 import { TourCard } from '@/components/cards/TourCard'
 import { VideoHero } from '@/components/VideoHero'
-import { getToursInfo } from '@/src/database/getToursInfo'
+import { getAllToursInfo } from '@/src/database/get-all-tours-info'
 import { Suspense } from 'react'
 
 // interface HomePageProps {
@@ -12,7 +12,7 @@ import { Suspense } from 'react'
 export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
-  const tours = await getToursInfo()
+  const tours = await getAllToursInfo()
   // console.log(tours)
   return (
     <>
