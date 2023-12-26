@@ -1,47 +1,59 @@
-import * as React from 'react'
 import Image from 'next/image'
-import { ToursInfo } from '@/src/schema/types'
+import { TourInfo } from '@/src/schema/types'
 
 // TODO how this going to work dynamically?
 import tourImage from '../../public/img/golden-outback-911x1024.jpg'
+import Link from 'next/link'
 
 export interface TourCardProps {
-  tour: ToursInfo
+  tour: TourInfo
 }
 
 export function TourCard({ tour }: TourCardProps) {
+  const cheapestPrice = Math.min(
+    ...tour.pricingOptions.map((option) => option.price),
+  )
+
   return (
-    <div className="bg-black flex-col flex ">
+    <div className="flex flex-col bg-black">
       {/* TODO drive this off a prop... tour.id naming convention */}
       <Image
-        src={tourImage}
-        alt="Man standing in pilbra with dirtbike"
+        // src={tourImage}
+        src={`/img/tours/${tour.id}-hero.jpg`}
+        alt="Man standing in Pilbara with dirtbike"
+        layout="fixed"
         width={640}
         height={720}
       />
-      <div>
-        <div className="flex flex-col gap-2 m-4">
-          <h3 className="font-sans2 text-3xl text-orange-500 uppercase text-center">
+      <div className="m-4 flex grow flex-col justify-between gap-5">
+        <div className="flex flex-col gap-2">
+          <h3 className="text-center font-sans2 text-3xl uppercase text-orange-500">
             {tour.title}
           </h3>
-          <p className="text-white font-thin text-center font-sans3 ">
+          <p className="text-center font-sans3 font-thin text-white ">
             {tour.hook}
           </p>
-          <p className="font-sans3 font-bold uppercase text-white text-center">
-            {`${tour.loop ? 'Loop' : 'One-way'} / ${tour.distance} / ${
+        </div>
+        <div className="flex flex-col gap-2">
+          <p className="text-center font-sans3 font-bold uppercase text-white">
+            {`${tour.loop ? 'Loop' : 'One-way'} / ${tour.distance}KM / ${
               tour.days
             } Days`}
           </p>
-          <p className="text-white text-center text-1xl font-sans3 font-thin">
-            {`From $${tour.basePrice}`}
+          <p className="text-1xl text-center font-sans3 font-thin text-white">
+            {`From $${cheapestPrice}`}
           </p>
-          <div className="flex flex-col md:flex-row gap-3 ">
-            <button className="border-2 border-orange-300 text-orange-300 h-12 grow">
-              LEARN MORE
-            </button>
-            <button className="border-2 border-orange-500 text-orange-400 h-12 grow max-w-['6rem']">
-              BOOK NOW
-            </button>
+          <div className="mb-2 flex grow justify-center gap-3 md:flex-row">
+            <Link href={`/tours/${tour.id}`}>
+              <button className="border-2 border-orange-300 px-3 py-2 text-orange-300">
+                LEARN MORE
+              </button>
+            </Link>
+            <Link href="/contact/bookings">
+              <button className="border-2 border-orange-500 px-3 py-2 text-orange-400">
+                BOOK NOW
+              </button>
+            </Link>
           </div>
         </div>
       </div>

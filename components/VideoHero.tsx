@@ -1,20 +1,26 @@
 'use client'
 import { useState } from 'react'
-import fireBikesUte from '../public/img/fire-bikes-ute.jpeg'
+import fireBikesUte from '../public/img/fire-bikes-ute.jpg'
 import RoundPlay from '@/components/icons/RoundPlay'
 import ReactPlayer from 'react-player/youtube'
+import Image from 'next/image'
 
 export function VideoHero() {
   const [playVideo, setPlayVideo] = useState(false)
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${fireBikesUte.src})`,
-      }}
-      className={'h-screen bg-cover bg-center'}
-    >
-      <div className="h-screen flex space-y-5 items-center justify-center flex-col bg-black/50">
+    <div className={'h-screen sticky bottom-0'}>
+      <Image
+        src={fireBikesUte}
+        alt={'Men in desert around campfire'}
+        className="object-cover"
+        placeholder="blur"
+        quality={100}
+        fill
+        sizes="100vw"
+        priority
+      />
+      <div className="h-screen flex space-y-5 items-center justify-center flex-col bg-black/50 relative z-10">
         <h2 className="text-white font-sans2 text-5xl font-bold text-center">
           RAW ADVENTURE
         </h2>

@@ -4,7 +4,7 @@ import dacaLogo from '../public/dacaLogo.png'
 
 const NavBar: React.FC = () => {
   return (
-    <div className="top-0 fixed w-full bg-black ">
+    <header className="sticky top-0 w-full bg-black z-10">
       <nav className="md:container flex justify-between mx-auto">
         <Image
           height={48}
@@ -20,7 +20,7 @@ const NavBar: React.FC = () => {
             <Link href="/about">About</Link>
           </li>
           <li className="text-white uppercase font-medium text-sm hover:text-orange-400">
-            Tours
+            <Link href="/tours/golden-outback">Tours</Link>
           </li>
           <li className="text-white uppercase font-medium text-sm hover:text-orange-400">
             Videos
@@ -33,7 +33,7 @@ const NavBar: React.FC = () => {
           </li>
         </ul>
       </nav>
-    </div>
+    </header>
   )
 }
 
