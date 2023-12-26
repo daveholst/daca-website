@@ -6,11 +6,8 @@ Rebuild of the website from a wordpress site to next.js on AWS to bring down cos
 
 - [ ] Fix the DACA Logo up [change to SVG, where? Redo>]
 - [ ] Optimize all the LARGE images :sweat:
+- [ ] :bug: clicking on home after load goes to the bottom of the
 
-## AWS CDK
+## Deploying
 
-From root
-`cdk synth` - build the cloudformation files from the typescript + CDK
-`cdk bootstrap` - creates the initial resources in AWS - I think these are just the resources for CDK / cloudformation to actually deploy to AWS. So I think you only have to bootstrap the 'account' once
-`cdk deploy` - deploys the actual resources
-`cdk destroy` - rips down all the resources/stack
+Next app builds with SST and open next. Prod deploys with `pnpm deploy:prod`

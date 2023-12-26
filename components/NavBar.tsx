@@ -1,11 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import dacaLogo from '../public/dacaLogo.png'
+import HoverMenu from '@/components/HoverMenu.client'
 
-const NavBar: React.FC = () => {
+interface props {
+  tourLinks: {
+    name: string
+    href: string
+  }[]
+}
+
+const NavBar = ({ tourLinks }: props) => {
   return (
-    <header className="sticky top-0 w-full bg-black z-10">
-      <nav className="md:container flex justify-between mx-auto">
+    <header className="sticky top-0 z-10 w-full bg-black">
+      <nav className="mx-auto flex justify-between md:container">
         <Image
           height={48}
           className="my-1"
@@ -13,22 +21,22 @@ const NavBar: React.FC = () => {
           alt="Daca Tours Logo"
         />
         <ul className="flex flex-row items-center gap-4">
-          <li className="text-white uppercase font-medium text-sm hover:text-orange-400">
+          <li className="text-sm font-medium uppercase text-white hover:text-orange-400">
             <Link href="/">Home</Link>
           </li>
-          <li className="text-white uppercase font-medium text-sm hover:text-orange-400">
+          <li className="text-sm font-medium uppercase text-white hover:text-orange-400">
             <Link href="/about">About</Link>
           </li>
-          <li className="text-white uppercase font-medium text-sm hover:text-orange-400">
-            <Link href="/tours/golden-outback">Tours</Link>
-          </li>
-          <li className="text-white uppercase font-medium text-sm hover:text-orange-400">
+          {/* <li className="text-sm font-medium uppercase text-white hover:text-orange-400"> */}
+          <HoverMenu links={tourLinks} />
+          {/* </li> */}
+          <li className="text-sm font-medium uppercase text-white hover:text-orange-400">
             Videos
           </li>
-          <li className="text-white uppercase font-medium text-sm hover:text-orange-400">
+          <li className="text-sm font-medium uppercase text-white hover:text-orange-400">
             Gallery
           </li>
-          <li className="text-white uppercase font-medium text-sm hover:text-orange-400">
+          <li className="text-sm font-medium uppercase text-white hover:text-orange-400">
             Contact
           </li>
         </ul>
