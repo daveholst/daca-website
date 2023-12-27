@@ -43,3 +43,8 @@ docker/
 #next
 /.open-next/
 /.sst/
+
+# Secrets Files
+secrets.ts
+.env.development
+.env.production

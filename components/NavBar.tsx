@@ -27,11 +27,9 @@ const NavBar = ({ tourLinks }: props) => {
           <li className="text-sm font-medium uppercase text-white hover:text-orange-400">
             <Link href="/about">About</Link>
           </li>
-          {/* <li className="text-sm font-medium uppercase text-white hover:text-orange-400"> */}
           <HoverMenu links={tourLinks} />
-          {/* </li> */}
           <li className="text-sm font-medium uppercase text-white hover:text-orange-400">
-            Videos
+            <Link href="/videos">Videos</Link>
           </li>
           <li className="text-sm font-medium uppercase text-white hover:text-orange-400">
             Gallery

@@ -1,5 +1,5 @@
 import { SSTConfig } from 'sst'
-import { NextjsSite, Table } from 'sst/constructs'
+import { Config, NextjsSite, Table } from 'sst/constructs'
 
 export default {
   config(_input) {
@@ -10,6 +10,8 @@ export default {
   },
   stacks(app) {
     app.stack(function Site({ stack }) {
+      const YOUTUBE_API_KEY = new Config.Secret(stack, 'YOUTUBE_API_KEY')
+
       const table = new Table(stack, 'table', {
         fields: {
           pk: 'string',
@@ -24,7 +26,7 @@ export default {
       })
 
       const site = new NextjsSite(stack, 'site', {
-        bind: [table],
+        bind: [table, YOUTUBE_API_KEY],
       })
 
       stack.addOutputs({
