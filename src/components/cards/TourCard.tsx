@@ -1,8 +1,5 @@
 import Image from 'next/image'
 import { TourInfo } from '@/src/schema/types'
-
-// TODO how this going to work dynamically?
-import tourImage from '../../public/img/golden-outback-911x1024.jpg'
 import Link from 'next/link'
 
 export interface TourCardProps {
@@ -16,12 +13,9 @@ export function TourCard({ tour }: TourCardProps) {
 
   return (
     <div className="flex flex-col bg-black">
-      {/* TODO drive this off a prop... tour.id naming convention */}
       <Image
-        // src={tourImage}
         src={`/img/tours/${tour.id}-hero.jpg`}
         alt="Man standing in Pilbara with dirtbike"
-        layout="fixed"
         width={640}
         height={720}
       />

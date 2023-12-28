@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import fireBikesUte from '../public/img/fire-bikes-ute.jpg'
-import RoundPlay from '@/components/icons/RoundPlay'
+import RoundPlay from '@/src/components/icons/RoundPlay'
 import ReactPlayer from 'react-player/youtube'
 import Image from 'next/image'
 
@@ -9,7 +9,7 @@ export function VideoHero() {
   const [playVideo, setPlayVideo] = useState(false)
 
   return (
-    <div className={'h-screen sticky bottom-0'}>
+    <div className={'sticky bottom-0 h-screen'}>
       <Image
         src={fireBikesUte}
         alt={'Men in desert around campfire'}
@@ -20,11 +20,11 @@ export function VideoHero() {
         sizes="100vw"
         priority
       />
-      <div className="h-screen flex space-y-5 items-center justify-center flex-col bg-black/50 relative z-10">
-        <h2 className="text-white font-sans2 text-5xl font-bold text-center">
+      <div className="relative z-10 flex h-screen flex-col items-center justify-center space-y-5 bg-black/50">
+        <h2 className="text-center font-sans2 text-5xl font-bold text-white">
           RAW ADVENTURE
         </h2>
-        <p className="font-sans3 text-orange-100 text-3xl font-extralight text-center lg:w-1/3">
+        <p className="text-center font-sans3 text-3xl font-extralight text-orange-100 lg:w-1/3">
           AUSTRALIA’S MOST REMOTE EPIC OFF-ROAD TOURS.
         </p>
         {!playVideo && (
@@ -33,14 +33,14 @@ export function VideoHero() {
             onClick={() => setPlayVideo(true)}
           >
             <RoundPlay />
-            <span className="font-sans3 text-white font-bold ">
+            <span className="font-sans3 font-bold text-white ">
               WATCH VIDEO
             </span>
           </button>
         )}
         {playVideo && (
           //TODO Maybe just take this out and host it on a CDN so I can get full control and kill the branding
-          <div className="xl:container aspect-video w-full">
+          <div className="aspect-video w-full xl:container">
             <ReactPlayer
               width={'100%'}
               height={'100%'}

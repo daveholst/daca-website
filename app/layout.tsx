@@ -1,8 +1,8 @@
-import NavBar from '@/components/NavBar'
+import NavBar from '@/src/components/NavBar'
 import './globals.css'
 import { Metadata } from 'next'
 import { Quicksand, Bungee, Montserrat } from 'next/font/google'
-import { getAllToursInfo } from '@/src/database/get-all-tours-info'
+import { getAllToursInfo } from '@/src/database/tours/get-all-tours-info'
 
 const quicksand = Quicksand({
   subsets: ['latin'],

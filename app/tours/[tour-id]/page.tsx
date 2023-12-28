@@ -1,8 +1,6 @@
 import Image from 'next/image'
 import { getTour } from '@/src/database/get-tour'
 
-// import tourImage from '../../../public/img/golden-outback-911x1024.jpg'
-
 interface Props {
   params: { 'tour-id': string }
 }

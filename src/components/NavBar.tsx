@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import dacaLogo from '../public/dacaLogo.png'
-import HoverMenu from '@/components/HoverMenu.client'
+import HoverMenu from '@/src/components/HoverMenu.client'
 
 interface props {
   tourLinks: {

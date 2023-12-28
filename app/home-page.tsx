@@ -1,7 +1,7 @@
 import { TourInfo } from '@/src/schema/types'
-import { TourCard } from '@/components/cards/TourCard'
-import { VideoHero } from '@/components/VideoHero'
-import { getAllToursInfo } from '@/src/database/get-all-tours-info'
+import { TourCard } from '@/src/components/cards/TourCard'
+import { VideoHero } from '@/src/components/VideoHero'
+import { getAllToursInfo } from '@/src/database/tours/get-all-tours-info'
 import { Suspense } from 'react'
 
 // interface HomePageProps {

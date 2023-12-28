@@ -1,5 +1,6 @@
 import React from 'react'
 import { Config } from 'sst/node/config'
+import { set } from 'zod'
 
 interface Thumbnail {
   url: string
@@ -43,6 +44,9 @@ const fetchVideos = async () => {
   try {
     const response = await fetch(
       `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=${maxResults}&key=${key}&channelId=${channelId}`,
+      {
+        next: { revalidate: 3600 },
+      },
     )
     const data: YouTubeApiResponse = await response.json()
 
@@ -70,7 +74,6 @@ export default async function Videos() {
             className="aspect-video w-full"
             src={`https://www.youtube.com/embed/${video.id.videoId}`}
             title={video.snippet.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
         </div>
